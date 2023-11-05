@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // For launching phone and SMS apps
+import 'package:url_launcher/url_launcher.dart';
 import 'package:toko_pertanian/screens/product_detail.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -37,71 +38,74 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          ProductRow(
-            product1: ProductItem(
-              name: 'Pupuk Kandang',
-              description: 'Pupuk organik',
-              price: 'Rp 50,000',
-              productName: 'Pupuk Kandang',
-              imagePath: 'assets/kandang.jpg',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProductRow(
+              product1: ProductItem(
+                name: 'Pupuk Kandang',
+                description: 'Pupuk organik',
+                price: 'Rp 50,000',
+                productName: 'Pupuk Kandang',
+                imagePath: 'assets/kandang.jpg',
+              ),
+              product2: ProductItem(
+                name: 'Pupuk Cair',
+                description: 'Pupuk cair berkualitas',
+                price: 'Rp 75,000',
+                productName: 'Pupuk Cair',
+                imagePath: 'assets/pupukcair.jpeg',
+              ),
+              product3: ProductItem(
+                name: 'Beras',
+                description: 'Beras pandan wangi berkualitas',
+                price: 'Rp 100,000',
+                productName: 'Beras',
+                imagePath: 'assets/beras.jpg',
+              ),
+              product4: ProductItem(
+                name: 'Jagung',
+                description: 'Jagung berkualitas',
+                price: 'Rp 75,000',
+                productName: 'Jagung',
+                imagePath: 'assets/jagung.jpg',
+              ),
+              product5: ProductItem(
+                name: 'Bibit Kentang',
+                description: 'Bibit kentang berkualitas',
+                price: 'Rp 120,000',
+                productName: 'Bibit Kentang',
+                imagePath: 'assets/bibitkentang.jpg',
+              ),
+              product6: ProductItem(
+                name: 'Bibit Wortel',
+                description: 'Bibit wortel berkualitas',
+                price: 'Rp 140,000',
+                productName: 'Bibit Wortel',
+                imagePath: 'assets/bibitwortel.jpg',
+              ),
+              // Add more ProductItems here
             ),
-            product2: ProductItem(
-              name: 'Pupuk Cair',
-              description: 'Pupuk cair berkualitas',
-              price: 'Rp 75,000',
-              productName: 'Pupuk Cair',
-              imagePath: 'assets/pupukcair.jpeg',
-            ),
-            product3: ProductItem(
-              name: 'Beras',
-              description: 'Beras pandan wangi berkualitas',
-              price: 'Rp 100,000',
-              productName: 'Beras',
-              imagePath: 'assets/beras.jpg',
-            ),
-            product4: ProductItem(
-              name: 'Jagung',
-              description: 'Jagung berkualitas',
-              price: 'Rp 75,000',
-              productName: 'Jagung',
-              imagePath: 'assets/jagung.jpg',
-            ),
-            product5: ProductItem(
-              name: 'Bibit Kentang',
-              description: 'Bibit kentang berkualitas',
-              price: 'Rp 120,000',
-              productName: 'Bibit Kentang',
-              imagePath: 'assets/bibitkentang.jpg',
-            ),
-            product6: ProductItem(
-              name: 'Bibit Wortel',
-              description: 'Bibit wortel berkualitas',
-              price: 'Rp 140,000',
-              productName: 'Bibit Wortel',
-              imagePath: 'assets/bibitwortel.jpg',
-            ),
-            // Add more ProductItems here
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
- void launchMap() async {
-    // Replace with your latitude and longitude coordinates
-    final double latitude = -6.979639;
-    final double longitude = 110.402861;
 
-    final String googleMapsUrl = "https://www.google.com/maps?q=$latitude,$longitude";
+void launchMap() async {
+  // Replace with your latitude and longitude coordinates
+  final double latitude = -6.979639;
+  final double longitude = 110.402861;
 
-    if (await canLaunch(googleMapsUrl)) {
-      await launch(googleMapsUrl);
-    } else {
-      throw 'Could not launch $googleMapsUrl';
-    }
+  final String googleMapsUrl = "https://www.google.com/maps?q=$latitude,$longitude";
+
+  if (await canLaunch(googleMapsUrl)) {
+    await launch(googleMapsUrl);
+  } else {
+    throw 'Could not launch $googleMapsUrl';
   }
+}
 
 class ProductRow extends StatelessWidget {
   final ProductItem product1;
@@ -110,7 +114,6 @@ class ProductRow extends StatelessWidget {
   final ProductItem product4;
   final ProductItem product5;
   final ProductItem product6;
-  // Add more product items as needed
 
   ProductRow({
     required this.product1,
@@ -119,7 +122,6 @@ class ProductRow extends StatelessWidget {
     required this.product4,
     required this.product5,
     required this.product6,
-    // Add more product items as needed
   });
 
   @override
