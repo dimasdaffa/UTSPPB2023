@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:toko_pertanian/screens/product_detail.dart';
-
+import 'package:toko_pertanian/screens/update_user.dart'; 
 
 void main() {
   runApp(MaterialApp(
@@ -24,11 +24,17 @@ class DashboardScreen extends StatelessWidget {
                 launch("sms://0857896772");
               } else if (choice == 'Lokasi/Maps') {
                 launchMap();
+              } else if (choice == 'Update User & Password') {
+                updateUserInfo(context);
               }
             },
             itemBuilder: (BuildContext context) {
-              return ['Call Center', 'SMS Center', 'Lokasi/Maps']
-                  .map((String choice) {
+              return [
+                'Call Center',
+                'SMS Center',
+                'Lokasi/Maps',
+                'Update User & Password'
+              ].map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -84,7 +90,6 @@ class DashboardScreen extends StatelessWidget {
                 productName: 'Bibit Wortel',
                 imagePath: 'assets/bibitwortel.jpg',
               ),
-              // Add more ProductItems here
             ),
           ],
         ),
@@ -94,11 +99,11 @@ class DashboardScreen extends StatelessWidget {
 }
 
 void launchMap() async {
-  // Replace with your latitude and longitude coordinates
   final double latitude = -6.979639;
   final double longitude = 110.402861;
 
-  final String googleMapsUrl = "https://www.google.com/maps?q=$latitude,$longitude";
+  final String googleMapsUrl =
+      "https://www.google.com/maps?q=$latitude,$longitude";
 
   if (await canLaunch(googleMapsUrl)) {
     await launch(googleMapsUrl);
@@ -137,7 +142,6 @@ class ProductRow extends StatelessWidget {
         Row(
           children: [product5, product6],
         ),
-        // Add more rows for additional product items as needed
       ],
     );
   }
@@ -168,9 +172,10 @@ class ProductItem extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => ProductDetailScreen(
-                    productName: productName,
-                    description: description,
-                    imagePath: imagePath),
+                  productName: productName,
+                  description: description,
+                  imagePath: imagePath,
+                ),
               ),
             );
           },
@@ -198,4 +203,13 @@ class ProductItem extends StatelessWidget {
       ),
     );
   }
+}
+
+void updateUserInfo(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => UpdateUserPasswordScreen(),
+    ),
+  );
 }
