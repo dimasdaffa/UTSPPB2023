@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toko_pertanian/screens/login.dart';
+import 'package:Tani_Yuk/screens/logins.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -10,13 +10,13 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/logo.jpg'),
-            Text('Selamat Datang Di UD. Pejuang Tani'),
+            Text('Selamat Datang Di UD. Tani Yuk'),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginPage(),
+                    builder: (context) => LoginScreen(),
                   ),
                 );
               },

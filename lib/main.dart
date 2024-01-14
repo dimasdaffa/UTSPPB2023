@@ -1,7 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:toko_pertanian/screens/splash_screen.dart';
+import 'package:Tani_Yuk/firebase_options.dart';
+import 'package:Tani_Yuk/screens/logins.dart';
+import 'package:Tani_Yuk/screens/signup.dart';
+import 'package:Tani_Yuk/screens/splash_screen.dart';
 
-void main() {
+void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyUniqueApp());
 }
 
@@ -24,7 +30,7 @@ class MyUniqueApp extends StatelessWidget {
           900: Color(0xFFFFC200),
         }),
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

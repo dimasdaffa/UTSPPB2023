@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "855240514395",
+    "project_id": "tokopertanian-cc8b2",
+    "storage_bucket": "tokopertanian-cc8b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855240514395:android:5e8be81a56142660fa187e",
+        "android_client_info": {
+          "package_name": "com.example.Tani_Yuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855240514395-c170und66ghnialrp04rlbbe3p0bhipl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuK2Mmg71UmO9in1QN_NeyF8QZM6u9N84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855240514395-c170und66ghnialrp04rlbbe3p0bhipl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855240514395:android:d4552c0be43bde4dfa187e",
+        "android_client_info": {
+          "package_name": "com.example.toko_pertanian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855240514395-c170und66ghnialrp04rlbbe3p0bhipl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuK2Mmg71UmO9in1QN_NeyF8QZM6u9N84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855240514395-c170und66ghnialrp04rlbbe3p0bhipl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

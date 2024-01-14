@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toko_pertanian/screens/proses.dart';
+import 'package:Tani_Yuk/screens/proses.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final String productName;

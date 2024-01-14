@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toko_pertanian/screens/payment.dart';
+import 'package:Tani_Yuk/screens/payment.dart';
 
 class SalesScreen extends StatefulWidget {
   final String productName;

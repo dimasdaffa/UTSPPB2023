@@ -1,15 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:Tani_Yuk/screens/logins.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:toko_pertanian/screens/product_detail.dart';
-import 'package:toko_pertanian/screens/update_user.dart'; 
+import 'package:Tani_Yuk/screens/product_detail.dart';
+import 'package:Tani_Yuk/screens/update_user.dart';
+import 'addBarang.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: DashboardScreen(),
+    home: FirebaseAuth.instance.currentUser == null
+        ? LoginScreen() // Replace with your login screen
+        : DashboardScreen(),
   ));
 }
 
 class DashboardScreen extends StatelessWidget {
+
+Future<void> _signOut(BuildContext context) async {
+  await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => LoginScreen()), 
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +38,11 @@ class DashboardScreen extends StatelessWidget {
               } else if (choice == 'SMS Center') {
                 launch("sms://0857896772");
               } else if (choice == 'Lokasi/Maps') {
-                launchMap();
+                _launchMap();
               } else if (choice == 'Update User & Password') {
                 updateUserInfo(context);
+              } else if (choice == 'Logout'){
+                _signOut(context);
               }
             },
             itemBuilder: (BuildContext context) {
@@ -33,7 +50,8 @@ class DashboardScreen extends StatelessWidget {
                 'Call Center',
                 'SMS Center',
                 'Lokasi/Maps',
-                'Update User & Password'
+                'Update User & Password',
+                'Logout',
               ].map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
@@ -43,6 +61,18 @@ class DashboardScreen extends StatelessWidget {
             },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddBarang(),
+            ),
+          );
+        },
+        tooltip: 'Add New Data',
+        child: Icon(Icons.add),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -98,12 +128,11 @@ class DashboardScreen extends StatelessWidget {
   }
 }
 
-void launchMap() async {
+void _launchMap() async {
   final double latitude = -6.979639;
   final double longitude = 110.402861;
 
-  final String googleMapsUrl =
-      "https://www.google.com/maps?q=$latitude,$longitude";
+  final googleMapsUrl = "https://www.google.com/maps?q=$latitude,$longitude";
 
   if (await canLaunch(googleMapsUrl)) {
     await launch(googleMapsUrl);
@@ -185,9 +214,10 @@ class ProductItem extends StatelessWidget {
               Image.asset(imagePath),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(name,
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                child: Text(
+                  name,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
